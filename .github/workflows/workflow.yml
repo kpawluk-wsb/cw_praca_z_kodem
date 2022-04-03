@@ -9,12 +9,13 @@ jobs:
         run: |
           docker --version
           python3 --version
-          docker build --tag test-flask-app .
       - name: Testing pylint
         uses: actions/setup-python@v1
         with:
-          python-version: 3.1
+          python-version: 3.10
         run: |
           python -m pip install --upgrade pip
           pip install pylint
           pylint app.py
+      - name: Docker image
+        run: docker build --tag test-flask-app .
